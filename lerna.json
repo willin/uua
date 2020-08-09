@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "create": {
+      "homepage": "https://github.com/willin/uua",
+      "license": "Apache-2.0",
+      "access": "public"
+    },
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "message": "chore(release): publish %s"
+    }
+  },
+  "ignoreChanges": ["**/test/**", "**/*.md", "packages/docs/**"]
+}

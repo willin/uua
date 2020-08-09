@@ -1,0 +1,40 @@
+{
+  "name": "uua",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "lint": "eslint --ext .js,.ts,.vue packages/"
+  },
+  "workspaces": [
+    "packages/@uua/*",
+    "packages/uua",
+    "packages/docs"
+  ],
+  "private": true,
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@commitlint/config-lerna-scopes": "^9.1.1",
+    "conventional-changelog-cli": "^2.0.34",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-willin": "^1.0.5",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
+  }
+}

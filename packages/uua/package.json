@@ -1,0 +1,26 @@
+{
+  "name": "uua",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Willin <willin@willin.org>",
+  "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/uua#readme",
+  "license": "Apache-2.0",
+  "main": "lib/uua.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willin/uua.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/willin/uua/issues"
+  }
+}

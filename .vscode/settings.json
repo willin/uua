@@ -1,5 +1,3 @@
 {
-  "conventionalCommits.scopes": [
-    "uua"
-  ]
+  "conventionalCommits.scopes": ["uua", "core"]
 }

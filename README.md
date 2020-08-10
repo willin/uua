@@ -1,5 +1,10 @@
-# uua - 
+# uua - Unbelievable UserAgent
 
+## Packages
+
+- `uua` (Please use `@uua/core` instead)
+- `@uua/core`: Core Lib
+- `@uua/icons`: Image Materials (<https://github.com/willin/uua-icons>)
 
 ## LICENSE
 

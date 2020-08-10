@@ -1,11 +1,15 @@
 {
-  "name": "uua",
+  "name": "@uua/core",
   "version": "0.0.0",
   "description": "Unbelievable User-Agent Module for both Node.js and Browser",
-  "author": "Willin <willin@willin.org>",
-  "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/uua#readme",
+  "keywords": [
+    "useragent",
+    "ip2c"
+  ],
+  "author": "Willin Wang <willin@willin.org>",
+  "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/core#readme",
   "license": "Apache-2.0",
-  "main": "lib/uua.js",
+  "main": "lib/core.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -13,6 +17,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willin/uua.git"
@@ -22,8 +29,5 @@
   },
   "bugs": {
     "url": "https://github.com/willin/uua/issues"
-  },
-  "dependencies": {
-    "@uua/core": "^0.0.0"
   }
 }

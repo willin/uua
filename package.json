@@ -2,6 +2,8 @@
   "name": "uua",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "build": "lerna run clean && lerna run build",
+    "version": "leerna version git--conventional-commits",
     "lint": "eslint --ext .js,.ts,.vue packages/"
   },
   "workspaces": [
@@ -14,16 +16,21 @@
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
     "@commitlint/config-lerna-scopes": "^9.1.1",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "axios": "^0.19.2",
     "conventional-changelog-cli": "^2.0.34",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-willin": "^1.0.5",
-    "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.23.1",
+    "rollup-plugin-terser": "^7.0.0"
   },
   "lint-staged": {
     "*.{js,ts}": [

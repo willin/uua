@@ -5,25 +5,22 @@
   "author": "Willin <willin@willin.org>",
   "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/uua#readme",
   "license": "Apache-2.0",
-  "main": "lib/uua.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
+  "module": "dist/core.es.js",
+  "main": "dist/core.cjs.js",
+  "browser": "dist/core.iife.js",
+  "unpkg": "dist/core.iife.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willin/uua.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "cp -R ../@uua/core/dist dist"
   },
   "bugs": {
     "url": "https://github.com/willin/uua/issues"
   },
   "dependencies": {
-    "@uua/core": "^0.0.0"
+    "@uua/core": "*"
   }
 }

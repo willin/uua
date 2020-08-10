@@ -1,6 +1,6 @@
 {
   "name": "@uua/core",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Unbelievable User-Agent Module for both Node.js and Browser",
   "keywords": [
     "useragent",
@@ -15,7 +15,7 @@
   "browser": "dist/core.iife.js",
   "unpkg": "dist/core.iife.js",
   "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
+    "access": "public"
   },
   "repository": {
     "type": "git",

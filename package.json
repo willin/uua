@@ -2,9 +2,12 @@
   "name": "uua",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run clean && lerna run build",
-    "version": "leerna version git--conventional-commits",
-    "lint": "eslint --ext .js,.ts,.vue packages/"
+    "build": "npm run build:clean && npm run build:packages",
+    "build:clean": "lerna run clean",
+    "build:packages": "lerna run build --stream --ignore docs",
+    "build:docs": "learn run --scope docs build",
+    "lint": "eslint --ext .js,.ts,.vue packages/",
+    "publish": "yarn lerna publish from-package --yes"
   },
   "workspaces": [
     "packages/@uua/*",

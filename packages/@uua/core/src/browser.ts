@@ -1,12 +1,14 @@
-export function detectBrowserVersion(ptr, ua) {
+import { UAAItem } from './types';
+
+export function detectBrowserVersion(ptr: string, ua: string): string {
   const regexp = new RegExp(`${ptr}[\\s|/|:]?([.0-9a-zA-Z]+)`, 'i');
-  const [, matched] = ua.match(regexp);
+  const [matched = ''] = regexp.exec(ua) || [];
   return matched;
 }
 
-export default function detectBrowser(ua) {
+export default function detectBrowser(ua: string): UAAItem {
+  let version: string | null = null;
   let title = '';
-  let version = null;
   let code = '';
   if (/360se/i.test(ua)) {
     title = '360Safe Explorer';
@@ -18,7 +20,7 @@ export default function detectBrowser(ua) {
     code = 'abolimba';
   } else if (/Acoo\sBrowser/i.test(ua)) {
     title = 'Acoo Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'acoobrowser';
   } else if (/Alienforce/i.test(ua)) {
     title = 'Alienforce';
@@ -28,7 +30,7 @@ export default function detectBrowser(ua) {
     code = 'amaya';
   } else if (/Amiga-AWeb/i.test(ua)) {
     title = 'Amiga AWeb';
-    version = detectBrowserVersion('AWeb');
+    version = detectBrowserVersion('AWeb', ua);
     code = 'amiga-aweb';
   } else if (/MRCHROME/i.test(ua)) {
     title = 'Amigo';
@@ -36,15 +38,15 @@ export default function detectBrowser(ua) {
     code = 'amigo';
   } else if (/America\sOnline\sBrowser/i.test(ua)) {
     title = 'America Online Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'aol';
   } else if (/AmigaVoyager/i.test(ua)) {
     title = 'Amiga Voyager';
-    version = detectBrowserVersion('Voyager');
+    version = detectBrowserVersion('Voyager', ua);
     code = 'amigavoyager';
   } else if (/ANTFresco/i.test(ua)) {
     title = 'ANT Fresco';
-    version = detectBrowserVersion('Fresco');
+    version = detectBrowserVersion('Fresco', ua);
     code = 'antfresco';
   } else if (/AOL/i.test(ua)) {
     title = 'AOL';
@@ -54,26 +56,26 @@ export default function detectBrowser(ua) {
     code = 'arora';
   } else if (/AtomicBrowser/i.test(ua)) {
     title = 'Atomic Web Browser';
-    version = detectBrowserVersion('AtomicBrowser');
+    version = detectBrowserVersion('AtomicBrowser', ua);
     code = 'atomicwebbrowser';
   } else if (/Avant\sBrowser/i.test(ua)) {
     title = 'Avant Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'avantbrowser';
   } else if (/WhiteHat\sAviator/i.test(ua)) {
     title = 'Aviator';
     code = 'aviator';
   } else if (/baidubrowser/i.test(ua)) {
     title = 'Baidu Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'baidubrowser';
   } else if (/\sSpark/i.test(ua)) {
     title = 'Baidu Spark';
-    version = detectBrowserVersion('Spark');
+    version = detectBrowserVersion('Spark', ua);
     code = 'baiduspark';
   } else if (/BarcaPro/i.test(ua)) {
     title = 'Barca Pro';
-    version = detectBrowserVersion('BarcaPro');
+    version = detectBrowserVersion('BarcaPro', ua);
     code = 'barca';
   } else if (/Barca/i.test(ua)) {
     title = 'Barca';
@@ -117,7 +119,7 @@ export default function detectBrowser(ua) {
     code = 'camino';
   } else if (/Cayman\sBrowser/i.test(ua)) {
     title = 'Cayman Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'caymanbrowser';
   } else if (/Charon/i.test(ua)) {
     title = 'Charon';
@@ -130,28 +132,28 @@ export default function detectBrowser(ua) {
     code = 'null';
   } else if (/chromeframe/i.test(ua)) {
     title = 'Google Chrome Frame';
-    version = detectBrowserVersion('chromeframe');
+    version = detectBrowserVersion('chromeframe', ua);
     code = 'google';
   } else if (/ChromePlus/i.test(ua)) {
     title = 'ChromePlus';
     code = 'chromeplus';
   } else if (/Iron/i.test(ua)) {
     title = 'SRWare Iron';
-    version = detectBrowserVersion('Iron');
+    version = detectBrowserVersion('Iron', ua);
     code = 'srwareiron';
   } else if (/Chromium/i.test(ua)) {
     title = 'Chromium';
     code = 'chromium';
   } else if (/Classilla/i.test(ua)) {
     title = 'Classilla';
-    version = detectBrowserVersion(' rv');
+    version = detectBrowserVersion(' rv', ua);
     code = 'classilla';
   } else if (/Coast/i.test(ua)) {
     title = 'Coast';
     code = 'coast';
   } else if (/coc_coc_browser/i.test(ua)) {
     title = 'Coc Coc';
-    version = detectBrowserVersion('coc_coc_browser');
+    version = detectBrowserVersion('coc_coc_browser', ua);
     code = 'coccoc';
   } else if (/Columbus/i.test(ua)) {
     title = 'Columbus';
@@ -161,7 +163,7 @@ export default function detectBrowser(ua) {
     code = 'cometbird';
   } else if (/Comodo_Dragon/i.test(ua)) {
     title = 'Comodo Dragon';
-    version = detectBrowserVersion('Dragon');
+    version = detectBrowserVersion('Dragon', ua);
     code = 'comodo-dragon';
   } else if (/Conkeror/i.test(ua)) {
     title = 'Conkeror';
@@ -174,15 +176,15 @@ export default function detectBrowser(ua) {
     code = 'corom';
   } else if (/Crazy\sBrowser/i.test(ua)) {
     title = 'Crazy Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'crazybrowser';
   } else if (/CrMo/i.test(ua)) {
     title = 'Chrome Mobile';
-    version = detectBrowserVersion('CrMo');
+    version = detectBrowserVersion('CrMo', ua);
     code = 'chrome';
   } else if (/CriOS/i.test(ua)) {
     title = 'Chrome';
-    version = detectBrowserVersion('CriOS');
+    version = detectBrowserVersion('CriOS', ua);
     code = 'chrome';
   } else if (/Cruz/i.test(ua)) {
     title = 'Cruz';
@@ -221,7 +223,7 @@ export default function detectBrowser(ua) {
     title = 'Dorothy';
     code = 'dorothybrowser';
   } else if (/DPlus/i.test(ua)) {
-    version = detectBrowserVersion('DPlus');
+    version = detectBrowserVersion('DPlus', ua);
     title = 'D+';
     code = 'dillo';
   } else if (/Edbrowse/i.test(ua)) {
@@ -229,14 +231,14 @@ export default function detectBrowser(ua) {
     code = 'edbrowse';
   } else if (/Element\sBrowser/i.test(ua)) {
     title = 'Element Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'elementbrowser';
   } else if (/Elinks/i.test(ua)) {
     title = 'Elinks';
     code = 'elinks';
   } else if (/Enigma\sBrowser/i.test(ua)) {
     title = 'Enigma Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'enigmabrowser';
   } else if (/EnigmaFox/i.test(ua)) {
     title = 'EnigmaFox';
@@ -279,7 +281,7 @@ export default function detectBrowser(ua) {
     code = 'globalmojo';
   } else if (/GoBrowser/i.test(ua)) {
     title = 'GO Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'gobrowser';
   } else if (/Google\sWireless\sTranscoder/i.test(ua)) {
     title = 'Google Wireless Transcoder';
@@ -296,7 +298,7 @@ export default function detectBrowser(ua) {
     code = 'greenbrowser';
   } else if (/GSA/i.test(ua) && /Mobile/i.test(ua)) {
     title = 'Google Search App';
-    version = detectBrowserVersion('GSA');
+    version = detectBrowserVersion('GSA', ua);
     code = 'google';
   } else if (/Hana/i.test(ua)) {
     title = 'Hana';
@@ -316,7 +318,7 @@ export default function detectBrowser(ua) {
     code = 'iris';
   } else if (/IBM\sWebExplorer/i.test(ua)) {
     title = 'IBM WebExplorer';
-    version = detectBrowserVersion('WebExplorer');
+    version = detectBrowserVersion('WebExplorer', ua);
     code = 'ibmwebexplorer';
   } else if (/IBrowse/i.test(ua) && !/MiuiBrowser/i.test(ua)) {
     title = 'IBrowse';
@@ -332,7 +334,7 @@ export default function detectBrowser(ua) {
     code = 'iceape';
   } else if (/IceCat/i.test(ua)) {
     title = 'GNU IceCat';
-    version = detectBrowserVersion('IceCat');
+    version = detectBrowserVersion('IceCat', ua);
     code = 'icecat';
   } else if (/IceDragon/i.test(ua)) {
     title = 'IceDragon';
@@ -345,7 +347,7 @@ export default function detectBrowser(ua) {
     code = 'msie-mobile';
   } else if (/iNet\sBrowser/i.test(ua)) {
     title = 'iNet Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'null';
   } else if (/iRider/i.test(ua)) {
     title = 'iRider';
@@ -376,7 +378,7 @@ export default function detectBrowser(ua) {
     code = 'kinza';
   } else if (/Strata/i.test(ua)) {
     title = 'Kirix Strata';
-    version = detectBrowserVersion('Strata');
+    version = detectBrowserVersion('Strata', ua);
     code = 'kirix-strata';
   } else if (/KKman/i.test(ua)) {
     title = 'KKman';
@@ -398,14 +400,14 @@ export default function detectBrowser(ua) {
     code = 'lbrowser';
   } else if (/LG Browser/i.test(ua)) {
     title = 'LG Web Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'lgbrowser';
   } else if (/LeechCraft/i.test(ua)) {
     title = 'LeechCraft';
     version = '';
     code = 'null';
   } else if (/Links/i.test(ua) && !/online\slink\svalidator/i.test(ua)) {
-    version = detectBrowserVersion('Links \\(');
+    version = detectBrowserVersion('Links \\(', ua);
     title = 'Links';
     code = 'links';
   } else if (/Lobo/i.test(ua)) {
@@ -441,14 +443,14 @@ export default function detectBrowser(ua) {
     code = 'mib';
   } else if (/Tablet\sbrowser/i.test(ua)) {
     title = 'MicroB';
-    version = detectBrowserVersion('Tablet browser');
+    version = detectBrowserVersion('Tablet browser', ua);
     code = 'microb';
   } else if (/Midori/i.test(ua)) {
     title = 'Midori';
     code = 'midori';
   } else if (/ min\//i.test(ua)) {
     title = 'Min Browser';
-    version = detectBrowserVersion('min');
+    version = detectBrowserVersion('min', ua);
     code = 'min';
   } else if (/Minefield/i.test(ua)) {
     title = 'Minefield';
@@ -461,14 +463,14 @@ export default function detectBrowser(ua) {
     code = 'minimo';
   } else if (/MiuiBrowser/i.test(ua)) {
     title = 'MIUI Browser';
-    version = detectBrowserVersion('MiuiBrowser');
+    version = detectBrowserVersion('MiuiBrowser', ua);
     code = 'miuibrowser';
   } else if (/Mosaic/i.test(ua)) {
     title = 'Mosaic';
     code = 'mosaic';
   } else if (/MozillaDeveloperPreview/i.test(ua)) {
     title = 'Mozilla Developer Preview';
-    version = detectBrowserVersion('MozillaDeveloperPreview');
+    version = detectBrowserVersion('MozillaDeveloperPreview', ua);
     code = 'firefoxdevpre';
   } else if (/MQQBrowser/i.test(ua) || /QQBrowser/i.test(ua)) {
     title = 'QQbrowser';
@@ -478,7 +480,7 @@ export default function detectBrowser(ua) {
     code = 'qqbrowser';
   } else if (/Multi-Browser/i.test(ua)) {
     title = 'Multi-Browser XP';
-    version = detectBrowserVersion('Multi-Browser');
+    version = detectBrowserVersion('Multi-Browser', ua);
     code = 'multi-browserxp';
   } else if (/MultiZilla/i.test(ua)) {
     title = 'MultiZilla';
@@ -497,7 +499,7 @@ export default function detectBrowser(ua) {
     code = 'firefoxdevpre';
   } else if (/Navigator/i.test(ua)) {
     title = 'Netscape Navigator';
-    version = detectBrowserVersion('Navigator');
+    version = detectBrowserVersion('Navigator', ua);
     code = 'netscape';
   } else if (/NetBox/i.test(ua)) {
     title = 'NetBox';
@@ -507,7 +509,7 @@ export default function detectBrowser(ua) {
     code = 'netcaptor';
   } else if (/NetFrontLifeBrowser/i.test(ua)) {
     title = 'NetFront Life';
-    version = detectBrowserVersion('NetFrontLifeBrowser');
+    version = detectBrowserVersion('NetFrontLifeBrowser', ua);
     code = 'netfrontlife';
   } else if (/NetFront/i.test(ua)) {
     title = 'NetFront';
@@ -526,11 +528,11 @@ export default function detectBrowser(ua) {
     code = 'netsurf';
   } else if (/NF-Browser/i.test(ua)) {
     title = 'NetFront';
-    version = detectBrowserVersion('NF-Browser');
+    version = detectBrowserVersion('NF-Browser', ua);
     code = 'netfront';
   } else if (/Ninesky-android-mobile/i.test(ua)) {
     title = 'Ninesky';
-    version = detectBrowserVersion('Ninesky-android-mobile');
+    version = detectBrowserVersion('Ninesky-android-mobile', ua);
     code = 'ninesky';
   } else if (/Nintendo 3DS/i.test(ua)) {
     title = 'Nintendo 3DS';
@@ -538,15 +540,15 @@ export default function detectBrowser(ua) {
     code = 'nintendo3dsbrowser';
   } else if (/NintendoBrowser/i.test(ua)) {
     title = 'Nintendo Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'nintendobrowser';
   } else if (/NokiaBrowser/i.test(ua)) {
     title = 'Nokia Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'nokia';
   } else if (/Novarra-Vision/i.test(ua)) {
     title = 'Novarra Vision';
-    version = detectBrowserVersion('Vision');
+    version = detectBrowserVersion('Vision', ua);
     code = 'novarra';
   } else if (/Obigo/i.test(ua)) {
     title = 'Obigo';
@@ -566,9 +568,9 @@ export default function detectBrowser(ua) {
     code = 'opera-2';
   } else if (/Opera Mobi/i.test(ua)) {
     if (/Version/i.test(ua)) {
-      version = detectBrowserVersion('Version');
+      version = detectBrowserVersion('Version', ua);
     } else {
-      version = detectBrowserVersion('Opera Mobi');
+      version = detectBrowserVersion('Opera Mobi', ua);
     }
     title = 'Opera Mobile';
     code = 'opera-2';
@@ -579,13 +581,13 @@ export default function detectBrowser(ua) {
     // How is version stored on this Opera ua?
     if (/Version/i.test(ua)) {
       code = 'opera-2';
-      version = detectBrowserVersion('Version');
+      version = detectBrowserVersion('Version', ua);
     } else if (/OPR/i.test(ua)) {
       code = 'opera-2';
-      version = detectBrowserVersion('OPR');
+      version = detectBrowserVersion('OPR', ua);
     } else {
       // Use Opera as fallback since full title may change (Next, Developer, etc.)
-      version = detectBrowserVersion('Opera');
+      version = detectBrowserVersion('Opera', ua);
     }
 
     // Is this one with a known alternate icon?
@@ -599,10 +601,11 @@ export default function detectBrowser(ua) {
 
     // Parse full edition name, ex: Opera/9.80 (X11; Linux x86_64; U; Edition Labs Camera and Pages; Ubuntu/11.10; en) Presto/2.9.220 Version/12.00
     if (/Edition ([\s._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Edition ([\s._0-9a-zA-Z]+)/i);
+      const regexp = /Edition ([\s._0-9a-zA-Z]+)/i;
+      const [matched = ''] = regexp.exec(ua) || [];
       title += ` ${matched}`;
     } else if (/Opera ([\s._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Edition ([\s._0-9a-zA-Z]+)/i);
+      const [matched = ''] = /Edition ([\s._0-9a-zA-Z]+)/i.exec(ua) || [];
       title += ` ${matched}`;
     }
 
@@ -621,7 +624,7 @@ export default function detectBrowser(ua) {
     version = '';
     code = 'owb';
   } else if (/osb-browser/i.test(ua)) {
-    version = detectBrowserVersion('osb-browser');
+    version = detectBrowserVersion('osb-browser', ua);
     title = 'Gtk+ WebCore';
     code = 'null';
   } else if (/Otter/i.test(ua)) {
@@ -629,23 +632,23 @@ export default function detectBrowser(ua) {
     code = 'otter';
   } else if (/\sPre\//i.test(ua)) {
     if (/Version/i.test(ua)) {
-      version = detectBrowserVersion('Version');
+      version = detectBrowserVersion('Version', ua);
     } else {
-      version = detectBrowserVersion('Pre');
+      version = detectBrowserVersion('Pre', ua);
     }
     title = 'Palm';
     code = 'palmpre';
   } else if (/\sWebPro\//i.test(ua)) {
     title = 'Palm WebPro';
-    version = detectBrowserVersion('WebPro');
+    version = detectBrowserVersion('WebPro', ua);
     code = 'palmwebpro';
   } else if (/Palemoon/i.test(ua)) {
     title = 'Pale Moon';
-    version = detectBrowserVersion('Moon');
+    version = detectBrowserVersion('Moon', ua);
     code = 'palemoon';
   } else if (/Patriott::Browser/i.test(ua)) {
     title = 'Patriott Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'patriott';
   } else if (/Perk/i.test(ua)) {
     title = 'Perk';
@@ -684,13 +687,13 @@ export default function detectBrowser(ua) {
     code = 'puffin';
   } else if (/QtWeb\sInternet\sBrowser/i.test(ua)) {
     title = 'QtWeb Internet Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'qtwebinternetbrowser';
   } else if (/QupZilla/i.test(ua)) {
     title = 'QupZilla';
     code = 'qupzilla';
   } else if (/Nichrome\/self/i.test(ua)) {
-    version = detectBrowserVersion('Nichrome/self');
+    version = detectBrowserVersion('Nichrome/self', ua);
     title = 'Rambler browser';
     code = 'ramblerbrowser';
   } else if (/rekonq/i.test(ua)) {
@@ -718,18 +721,18 @@ export default function detectBrowser(ua) {
     code = 'seamonkey';
   } else if (/SEMC-Browser/i.test(ua)) {
     title = 'SEMC Browser';
-    version = detectBrowserVersion('SEMC-Browser');
+    version = detectBrowserVersion('SEMC-Browser', ua);
     code = 'semcbrowser';
   } else if (/SEMC-java/i.test(ua)) {
     title = 'SEMC-java';
     code = 'semcbrowser';
   } else if (/Series60/i.test(ua) && !/Symbian/i.test(ua)) {
     title = 'Nokia Series60';
-    version = detectBrowserVersion('Series60');
+    version = detectBrowserVersion('Series60', ua);
     code = 's60';
   } else if (/S60/i.test(ua) && !/Symbian/i.test(ua)) {
     title = 'Nokia S60';
-    version = detectBrowserVersion('S60');
+    version = detectBrowserVersion('S60', ua);
     code = 's60';
   } else if (/SE\s/i.test(ua) && /MetaSr/i.test(ua)) {
     title = 'Sogou Explorer';
@@ -737,7 +740,7 @@ export default function detectBrowser(ua) {
     code = 'sogou';
   } else if (/Seznam\.cz/i.test(ua)) {
     title = 'Seznam.cz';
-    version = detectBrowserVersion('cz');
+    version = detectBrowserVersion('cz', ua);
     code = 'seznam-cz';
   } else if (/Shiira/i.test(ua)) {
     title = 'Shiira';
@@ -747,7 +750,7 @@ export default function detectBrowser(ua) {
     code = 'firefoxdevpre';
   } else if (/Silk/i.test(ua) && !/PlayStation/i.test(ua)) {
     title = 'Amazon Silk';
-    version = detectBrowserVersion('Silk');
+    version = detectBrowserVersion('Silk', ua);
     code = 'silk';
   } else if (/SiteKiosk/i.test(ua)) {
     title = 'SiteKiosk';
@@ -769,7 +772,7 @@ export default function detectBrowser(ua) {
     code = 'slimbrowser';
   } else if (/SmartTV/i.test(ua)) {
     title = 'Maple Browser';
-    version = detectBrowserVersion('WebBrowser');
+    version = detectBrowserVersion('WebBrowser', ua);
     code = 'maplebrowser';
   } else if (/Songbird/i.test(ua)) {
     title = 'Songbird';
@@ -782,7 +785,7 @@ export default function detectBrowser(ua) {
     code = 'substream';
   } else if (/Sulfur/i.test(ua)) {
     title = 'Flock Sulfur';
-    version = detectBrowserVersion('Sulfur');
+    version = detectBrowserVersion('Sulfur', ua);
     code = 'flock';
   } else if (/Sundance/i.test(ua)) {
     title = 'Sundance';
@@ -820,7 +823,7 @@ export default function detectBrowser(ua) {
     code = 'obigo';
   } else if (/TenFourFox/i.test(ua)) {
     title = 'TenFourFox';
-    version = detectBrowserVersion(' rv');
+    version = detectBrowserVersion(' rv', ua);
     code = 'tenfourfox';
   } else if (/QtCarBrowser/i.test(ua)) {
     title = 'Tesla Car Browser';
@@ -841,7 +844,7 @@ export default function detectBrowser(ua) {
     code = 'tjusig';
   } else if (/TencentTraveler/i.test(ua)) {
     title = 'TT Explorer';
-    version = detectBrowserVersion('TencentTraveler');
+    version = detectBrowserVersion('TencentTraveler', ua);
     code = 'tt-explorer';
   } else if (/uBrowser/i.test(ua) && !/Chrome/i.test(ua)) {
     title = 'uBrowser';
@@ -852,30 +855,30 @@ export default function detectBrowser(ua) {
     code = 'ubuntuwebbrowser';
   } else if (/UBrowser/i.test(ua)) {
     title = 'UC Browser';
-    version = detectBrowserVersion('UBrowser');
+    version = detectBrowserVersion('UBrowser', ua);
     code = 'ucbrowser';
   } else if (/UCBrowser/i.test(ua)) {
     title = 'UC Browser';
-    version = detectBrowserVersion('UCBrowser');
+    version = detectBrowserVersion('UCBrowser', ua);
     code = 'ucbrowser';
   } else if (/UC\sBrowser/i.test(ua)) {
     title = 'UC Browser';
-    version = detectBrowserVersion('UC Browser');
+    version = detectBrowserVersion('UC Browser', ua);
     code = 'ucbrowser';
   } else if (/UCWEB/i.test(ua)) {
     title = 'UC Browser';
-    version = detectBrowserVersion('UCWEB');
+    version = detectBrowserVersion('UCWEB', ua);
     code = 'ucweb';
   } else if (/UltraBrowser/i.test(ua)) {
     title = 'UltraBrowser';
     code = 'ultrabrowser';
   } else if (/UP.Browser/i.test(ua)) {
     title = 'Openwave Mobile Browser';
-    version = detectBrowserVersion('UP.Browser');
+    version = detectBrowserVersion('UP.Browser', ua);
     code = 'openwave';
   } else if (/UP.Link/i.test(ua)) {
     title = 'Openwave Mobile Browser';
-    version = detectBrowserVersion('UP.Link');
+    version = detectBrowserVersion('UP.Link', ua);
     code = 'openwave';
   } else if (/Usejump/i.test(ua)) {
     title = 'Usejump';
@@ -906,18 +909,18 @@ export default function detectBrowser(ua) {
     code = 'webpositive';
   } else if (/AppleWebkit/i.test(ua) && /Android/i.test(ua) && !/Chrome/i.test(ua)) {
     title = 'Android Webkit';
-    version = detectBrowserVersion('Version');
+    version = detectBrowserVersion('Version', ua);
     code = 'android-webkit';
   } else if (/Waterfox/i.test(ua)) {
     title = 'Waterfox';
     code = 'waterfox';
   } else if (/WebExplorer/i.test(ua)) {
     title = 'Web Explorer';
-    version = detectBrowserVersion('Explorer');
+    version = detectBrowserVersion('Explorer', ua);
     code = 'webexplorer';
   } else if (/WebianShell/i.test(ua)) {
     title = 'Webian Shell';
-    version = detectBrowserVersion('Shell');
+    version = detectBrowserVersion('Shell', ua);
     code = 'webianshell';
   } else if (/Webrender/i.test(ua)) {
     title = 'Webrender';
@@ -927,11 +930,11 @@ export default function detectBrowser(ua) {
     // https://developer.chrome.com/multidevice/user-agent
 
     title = 'WebView';
-    version = detectBrowserVersion('Version');
+    version = detectBrowserVersion('Version', ua);
     code = 'android-webkit';
   } else if (/WeltweitimnetzBrowser/i.test(ua)) {
     title = 'Weltweitimnetz Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'weltweitimnetzbrowser';
   } else if (/wKiosk/i.test(ua)) {
     title = 'wKiosk';
@@ -942,10 +945,10 @@ export default function detectBrowser(ua) {
     code = 'worldwideweb';
   } else if (/wOSBrowser/i.test(ua) || /webOSBrowser/i.test(ua)) {
     title = 'wOSBrowser';
-    version = detectBrowserVersion('OSBrowser');
+    version = detectBrowserVersion('OSBrowser', ua);
     code = 'webos';
   } else if (/wp-android/i.test(ua)) {
-    version = detectBrowserVersion('wp-android'); // TODO check into Android version being returned
+    version = detectBrowserVersion('wp-android', ua); // TODO check into Android version being returned
     title = 'Wordpress App';
     code = 'wordpress';
   } else if (/wp-blackberry/i.test(ua)) {
@@ -953,7 +956,7 @@ export default function detectBrowser(ua) {
     code = 'wordpress';
   } else if (/wp-iphone/i.test(ua)) {
     title = 'Wordpress App';
-    version = detectBrowserVersion('wp-iphone');
+    version = detectBrowserVersion('wp-iphone', ua);
     code = 'wordpress';
   } else if (/wp-nokia/i.test(ua)) {
     title = 'wp-nokia';
@@ -975,11 +978,11 @@ export default function detectBrowser(ua) {
     code = 'null';
   } else if (/YaBrowser/i.test(ua)) {
     title = 'Yandex Browser';
-    version = detectBrowserVersion('Browser');
+    version = detectBrowserVersion('Browser', ua);
     code = 'yandex';
   } else if (/YRCWeblink/i.test(ua)) {
     title = 'YRC Weblink';
-    version = detectBrowserVersion('Weblink');
+    version = detectBrowserVersion('Weblink', ua);
     code = 'yrcweblink';
   } else if (/zBrowser/i.test(ua)) {
     title = 'zBrowser';
@@ -995,41 +998,41 @@ export default function detectBrowser(ua) {
     code = 'abrowse';
   } else if (/Edge/i.test(ua) && /Chrome/i.test(ua) && /Safari/i.test(ua)) {
     title = 'Microsoft Edge';
-    version = detectBrowserVersion('Edge');
+    version = detectBrowserVersion('Edge', ua);
     code = 'msedge12';
   } else if (/Edge\//i.test(ua) || /Edg\//i.test(ua) || /EdgiOS\//i.test(ua) || /EdgA\//i.test(ua)) {
     title = 'Microsoft Edge';
 
     if (/Edge\//i.test(ua)) {
       // Edge (MSIE rebrand and rewrite)
-      version = detectBrowserVersion('Edge');
+      version = detectBrowserVersion('Edge', ua);
       code = 'edge-1';
     } else {
       if (/EdgiOS\//i.test(ua)) {
         // Edge for iOS
-        version = detectBrowserVersion('EdgiOS');
+        version = detectBrowserVersion('EdgiOS', ua);
       } else if (/EdgA\//i.test(ua)) {
         // Edge for Android
-        version = detectBrowserVersion('EdgA');
+        version = detectBrowserVersion('EdgA', ua);
       } else {
         // Edge (Chromium)
-        version = detectBrowserVersion('Edg');
+        version = detectBrowserVersion('Edg', ua);
       }
       code = 'edge-2';
     }
   } else if (/Chrome/i.test(ua)) {
     title = 'Google Chrome';
-    version = detectBrowserVersion('Chrome');
+    version = detectBrowserVersion('Chrome', ua);
     code = 'chrome';
   } else if (/Safari/i.test(ua) && !/Nokia/i.test(ua)) {
     title = 'Safari';
 
     if (/Version/i.test(ua)) {
-      version = detectBrowserVersion('Version');
+      version = detectBrowserVersion('Version', ua);
     }
 
     if (/Mobile Safari/i.test(ua)) {
-      title = 'Mobile '.title;
+      title = `Mobile ${title}`;
     }
 
     code = 'safari';
@@ -1045,10 +1048,10 @@ export default function detectBrowser(ua) {
 
     if (/\srv:([.0-9a-zA-Z]+)/i.test(ua)) {
       // IE11 or newer
-      version = detectBrowserVersion(' rv');
+      version = detectBrowserVersion(' rv', ua);
     } else {
       // IE10 or older, regex: '/MSIE[\s|\/]?([.0-9a-zA-Z]+)/i'
-      version = detectBrowserVersion('MSIE');
+      version = detectBrowserVersion('MSIE', ua);
     }
 
     if (Number(version) >= 10) {
@@ -1079,7 +1082,7 @@ export default function detectBrowser(ua) {
     }
   } else if (/Mozilla/i.test(ua)) {
     title = 'Mozilla';
-    version = detectBrowserVersion(' rv');
+    version = detectBrowserVersion(' rv', ua);
 
     if (version === null) {
       title += ' Compatible';
@@ -1097,7 +1100,7 @@ export default function detectBrowser(ua) {
 
   // Set version if it hasn't been parsed yet (generic structure)...
   if (version === null) {
-    version = detectBrowserVersion(title);
+    version = detectBrowserVersion(title, ua);
   }
 
   return {

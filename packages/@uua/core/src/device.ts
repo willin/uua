@@ -1,5 +1,8 @@
-export default function detectDevice(ua) {
-  let version = null;
+/* eslint-disable @typescript-eslint/prefer-regexp-exec */
+import { UAAItem } from './types';
+
+export default function detectDevice(ua: string): UAAItem | undefined {
+  let version: string | null = null;
   let title = '';
   let code = '';
   // Apple
@@ -7,8 +10,7 @@ export default function detectDevice(ua) {
     title = 'iPad';
 
     if (/CPU\sOS\s([._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/CPU\sOS\s([._0-9a-zA-Z]+)/i);
-
+      const [, matched = ''] = ua.match(/CPU\sOS\s([._0-9a-zA-Z]+)/i) || [];
       version = `iOS ${matched.replace(/_/g, '.')}`;
     }
 
@@ -17,7 +19,7 @@ export default function detectDevice(ua) {
     title = 'iPod';
 
     if (/iPhone\sOS\s([._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/iPhone\sOS\s([._0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/iPhone\sOS\s([._0-9a-zA-Z]+)/i) || [];
       version = `iOS ${matched.replace(/_/g, '.')}`;
     }
 
@@ -26,7 +28,7 @@ export default function detectDevice(ua) {
     title = 'iPhone';
 
     if (/iPhone\sOS\s([._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/iPhone\sOS\s([._0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/iPhone\sOS\s([._0-9a-zA-Z]+)/i) || [];
       version = `iOS ${matched.replace(/_/g, '.')}`;
     }
 
@@ -38,7 +40,7 @@ export default function detectDevice(ua) {
     title = 'BenQ-Siemens';
 
     if (/[^M]SIE-([.0-9a-zA-Z]+)\//i.test(ua)) {
-      const [, matched] = ua.match(/[^M]SIE-([.0-9a-zA-Z]+)\//i);
+      const [, matched = ''] = ua.match(/[^M]SIE-([.0-9a-zA-Z]+)\//i) || [];
       version = matched;
     }
 
@@ -50,7 +52,7 @@ export default function detectDevice(ua) {
     title = 'BlackBerry';
 
     if (/blackberry([.0-9a-zA-Z]+)\//i.test(ua)) {
-      const [, matched] = ua.match(/blackberry([.0-9a-zA-Z]+)\//i);
+      const [, matched = ''] = ua.match(/blackberry([.0-9a-zA-Z]+)\//i) || [];
       version = matched;
     }
 
@@ -105,10 +107,10 @@ export default function detectDevice(ua) {
     } else if (/HTC[\s|_|-]Tattoo/i.test(ua)) {
       title += ' Tattoo';
     } else if (/HTC[\s|_|-]?([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/HTC[\s|_|-]?([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/HTC[\s|_|-]?([.0-9a-zA-Z]+)/i) || [];
       title += ` ${matched}`; // Matche other HTC product names (possibly versions?)
     } else if (/HTC([._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/HTC([._0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/HTC([._0-9a-zA-Z]+)/i) || [];
       title += matched.replace(/_/g, '.');
     }
 
@@ -119,7 +121,7 @@ export default function detectDevice(ua) {
   else if (/Kindle/i.test(ua)) {
     title = 'Kindle';
     if (/Kindle\/([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Kindle\/([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Kindle\/([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -131,7 +133,7 @@ export default function detectDevice(ua) {
     title = 'LG';
 
     if (/LG[E]?[\s|-|/]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/LG[E]?[\s|-|/]([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/LG[E]?[\s|-|/]([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -179,7 +181,7 @@ export default function detectDevice(ua) {
     title = 'Motorola';
 
     if (/MOT[O-]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/MOTO([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/MOTO([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -217,7 +219,7 @@ export default function detectDevice(ua) {
   else if (/Nokia/i.test(ua) && !/S(eries)?60/i.test(ua)) {
     title = 'Nokia';
     if (/Nokia(E|N)?([0-9]+)/i.test(ua)) {
-      const [, m1, m2] = ua.match(/Nokia(E|N)?([0-9]+)/i);
+      const [, m1, m2] = ua.match(/Nokia(E|N)?([0-9]+)/i) || [];
       title += ` ${m1}${m2}`;
     }
     code = 'nokia';
@@ -275,7 +277,7 @@ export default function detectDevice(ua) {
     title = 'Samsung';
 
     if (/Samsung-([.\-0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Samsung-([.\-0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Samsung-([.\-0-9a-zA-Z]+)/i) || [];
       title += ` ${matched}`;
     }
 
@@ -287,7 +289,7 @@ export default function detectDevice(ua) {
     title = 'Sony Ericsson';
 
     if (/SonyEricsson([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/SonyEricsson([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/SonyEricsson([.0-9a-zA-Z]+)/i) || [];
       if (matched.toLowerCase() === 'u20i') {
         title += ' Xperia X10 Mini Pro';
       } else {
@@ -320,7 +322,7 @@ export default function detectDevice(ua) {
 
   return {
     title,
-    version,
+    version: version || '',
     code,
     icon: `/net/${code}.png`
   };

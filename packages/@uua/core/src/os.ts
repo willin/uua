@@ -1,5 +1,8 @@
-export default function detectOs(ua) {
-  let version = null;
+/* eslint-disable @typescript-eslint/prefer-regexp-exec */
+import { UAAItem } from './types';
+
+export default function detectOs(ua: string): UAAItem {
+  let version: string | null = null;
   let title = '';
   let code = '';
 
@@ -7,7 +10,7 @@ export default function detectOs(ua) {
     title = 'AmigaOS';
 
     if (/AmigaOS ([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/AmigaOS ([.0-9a-zA-Z]+)/i);
+      const [matched = ''] = /AmigaOS ([.0-9a-zA-Z]+)/i.exec(ua) || [];
       version = matched;
     }
 
@@ -17,7 +20,7 @@ export default function detectOs(ua) {
     code = 'android';
 
     if (/Android[ |/]?([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Android[ |/]?([.0-9a-zA-Z]+)/i);
+      const [matched = ''] = /Android[ |/]?([.0-9a-zA-Z]+)/i.exec(ua) || [];
       version = matched;
     }
   } else if (/[^A-Za-z]Arch/i.test(ua)) {
@@ -30,7 +33,7 @@ export default function detectOs(ua) {
     title = 'CentOS';
 
     if (/.el([.0-9a-zA-Z]+).centos/i.test(ua)) {
-      const [, matched] = ua.match(/.el([.0-9a-zA-Z]+).centos/i);
+      const [, matched = ''] = ua.match(/.el([.0-9a-zA-Z]+).centos/i) || [];
       version = matched;
     }
 
@@ -54,7 +57,7 @@ export default function detectOs(ua) {
     title = 'Edubuntu';
 
     if (/Edubuntu[/| ]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Edubuntu[/| ]([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Edubuntu[/| ]([.0-9a-zA-Z]+)/i) || [];
       version = matched;
       if (Number(matched) < 10) {
         code = 'edubuntu-1';
@@ -66,7 +69,7 @@ export default function detectOs(ua) {
     title = 'Fedora';
 
     if (/\.fc([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/\.fc([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/\.fc([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -75,7 +78,7 @@ export default function detectOs(ua) {
     title = 'Foresight Linux';
 
     if (/Foresight Linux\/([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Foresight Linux\/([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Foresight Linux\/([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -93,12 +96,12 @@ export default function detectOs(ua) {
     title = 'IRIX Linux';
 
     if (/IRIX(64)? ([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, m1, m2] = ua.match(/IRIX(64)? ([.0-9a-zA-Z]+)/i);
+      const [, m1, m2] = ua.match(/IRIX(64)? ([.0-9a-zA-Z]+)/i) || [];
       if (m2) {
         version = m2;
       }
       if (m1) {
-        version = `x64 ${version}`;
+        version = `x64 ${version || ''}`;
       }
     }
 
@@ -113,7 +116,7 @@ export default function detectOs(ua) {
     title = 'Kubuntu';
 
     if (/Kubuntu[/| ]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Kubuntu[/| ]([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Kubuntu[/| ]([.0-9a-zA-Z]+)/i) || [];
       version = matched;
       if (Number(matched) < 10) {
         code = 'kubuntu-1';
@@ -131,7 +134,7 @@ export default function detectOs(ua) {
     title = 'Linux Mint';
 
     if (/Linux Mint\/([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Linux Mint\/([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Linux Mint\/([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -140,7 +143,7 @@ export default function detectOs(ua) {
     title = 'Lubuntu';
 
     if (/Lubuntu[/| ]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Lubuntu[/| ]([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Lubuntu[/| ]([.0-9a-zA-Z]+)/i) || [];
       version = matched;
       if (Number(matched) < 10) {
         code = 'lubuntu-1';
@@ -162,7 +165,7 @@ export default function detectOs(ua) {
         version = matched;
         code = 'mac-2';
       }
-      version = `OS X ${version.replace(/_/g, '.')}`;
+      version = `OS X ${(version || '').replace(/_/g, '.')}`;
     } else if (/Darwin/i.test(ua)) {
       version = 'OS Darwin';
       code = 'mac-1';
@@ -177,7 +180,7 @@ export default function detectOs(ua) {
     title = 'Mandriva';
 
     if (/mdv([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/mdv([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/mdv([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -186,7 +189,7 @@ export default function detectOs(ua) {
     title = 'moonOS';
 
     if (/moonOS\/([.0-9a-zA-Z]+)/i.test(ua)) {
-      const matched = ua.match(/moonOS\/([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/moonOS\/([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -201,7 +204,7 @@ export default function detectOs(ua) {
     title = 'Nova';
 
     if (/Nova[/| ]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Nova[/| ]([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Nova[/| ]([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -213,7 +216,7 @@ export default function detectOs(ua) {
     title = 'Oracle';
 
     if (/.el([._0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/.el([._0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/.el([._0-9a-zA-Z]+)/i) || [];
       title += ' Enterprise Linux';
       version = matched.replace(/_/g, '.');
     } else {
@@ -228,7 +231,7 @@ export default function detectOs(ua) {
     title = 'PCLinuxOS';
 
     if (/PCLinuxOS\/[.-0-9a-zA-Z]+pclos([.-0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/PCLinuxOS\/[.-0-9a-zA-Z]+pclos([.-0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/PCLinuxOS\/[.-0-9a-zA-Z]+pclos([.-0-9a-zA-Z]+)/i) || [];
       version = matched.replace(/_/g, '.');
     }
 
@@ -238,7 +241,7 @@ export default function detectOs(ua) {
 
     if (/.el([._0-9a-zA-Z]+)/i.test(ua)) {
       title += ' Enterprise Linux';
-      const [, matched] = ua.match(/.el([._0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/.el([._0-9a-zA-Z]+)/i) || [];
       version = matched.replace(/_/g, '.');
     }
 
@@ -265,7 +268,7 @@ export default function detectOs(ua) {
     title = 'SymbianOS';
 
     if (/Symb[ian]?[OS]?\/([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Symb[ian]?[OS]?\/([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Symb[ian]?[OS]?\/([.0-9a-zA-Z]+)/i) || [];
       version = matched;
     }
 
@@ -361,7 +364,7 @@ export default function detectOs(ua) {
     title = 'Xubuntu';
 
     if (/Xubuntu[/| ]([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Xubuntu[/| ]([.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Xubuntu[/| ]([.0-9a-zA-Z]+)/i) || [];
       version = matched;
       if (Number(matched) < 10) {
         code = 'xubuntu-1';
@@ -379,7 +382,7 @@ export default function detectOs(ua) {
     title = 'Ubuntu';
 
     if (/Ubuntu[/| ]([.0-9]+[.0-9a-zA-Z]+)/i.test(ua)) {
-      const [, matched] = ua.match(/Ubuntu[/| ]([.0-9]+[.0-9a-zA-Z]+)/i);
+      const [, matched = ''] = ua.match(/Ubuntu[/| ]([.0-9]+[.0-9a-zA-Z]+)/i) || [];
       version = matched;
       if (Number(matched) < 10) {
         code = 'ubuntu-1';
@@ -408,7 +411,7 @@ export default function detectOs(ua) {
   // Check x64 architecture
   if (/x86_64/i.test(ua)) {
     // If version isn't null append 64 bit, otherwise set it to x64
-    version = version === null ? 'x64' : `${version} x64`;
+    version = `${version || ''} x64`;
   } else if (
     (/Windows/i.test(ua) || // is Windows?
       /WinNT/i.test(ua) ||
@@ -422,7 +425,7 @@ export default function detectOs(ua) {
 
   return {
     title,
-    version,
+    version: version || '',
     code,
     icon: `/os/${code}.png`
   };

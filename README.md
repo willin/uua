@@ -1,5 +1,13 @@
 # uua - Unbelievable UserAgent
 
+## Usage
+
+### Icons & CDN
+
+You may fork `@uua/icons` (Source: <https://github.com/willin/uua-icons>) and make your own icon design.
+
+By default, `uua` is using [jsdelivr](https://www.jsdelivr.com/package/npm/@uua/icons) CDN
+
 ## Packages
 
 - `uua` (Please use `@uua/core` instead)

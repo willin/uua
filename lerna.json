@@ -14,9 +14,5 @@
       "message": "release(core): publish %s"
     }
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "ignoreChanges": ["**/test/**", "**/*.md", "packages/docs/**"]
 }

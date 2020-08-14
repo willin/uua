@@ -1,30 +1,22 @@
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-    node: true
-  },
   extends: ['willin', 'prettier', 'plugin:prettier/recommended'],
   plugins: ['prettier'],
   // add your custom rules here
   settings: {
     'import/core-modules': ['@rollup/plugin-typescript', 'rollup-plugin-dts']
   },
+  rules: {
+    camelcase: 0
+  },
   overrides: [
     // typescript configs
     {
       files: ['*.ts'],
       excludedFiles: ['packages/docs/**/*.vue'],
-      extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:import/typescript',
-        'prettier/@typescript-eslint'
-      ],
+      extends: ['plugin:@typescript-eslint/recommended', 'plugin:import/typescript', 'prettier/@typescript-eslint'],
       parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: ['./packages/@uua/core/tsconfig.json', './packages/@uua/ip2c/tsconfig.json']
-      },
+
       rules: {
         'import/extensions': [
           1,

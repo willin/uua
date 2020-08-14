@@ -2,7 +2,7 @@ import { UAAItem } from './types';
 
 export function detectBrowserVersion(ptr: string, ua: string): string {
   const regexp = new RegExp(`${ptr}[\\s|/|:]?([.0-9a-zA-Z]+)`, 'i');
-  const [matched = ''] = regexp.exec(ua) || [];
+  const [, matched = ''] = regexp.exec(ua) || [];
   return matched;
 }
 
@@ -602,10 +602,10 @@ export default function detectBrowser(ua: string): UAAItem {
     // Parse full edition name, ex: Opera/9.80 (X11; Linux x86_64; U; Edition Labs Camera and Pages; Ubuntu/11.10; en) Presto/2.9.220 Version/12.00
     if (/Edition ([\s._0-9a-zA-Z]+)/i.test(ua)) {
       const regexp = /Edition ([\s._0-9a-zA-Z]+)/i;
-      const [matched = ''] = regexp.exec(ua) || [];
+      const [, matched = ''] = regexp.exec(ua) || [];
       title += ` ${matched}`;
     } else if (/Opera ([\s._0-9a-zA-Z]+)/i.test(ua)) {
-      const [matched = ''] = /Edition ([\s._0-9a-zA-Z]+)/i.exec(ua) || [];
+      const [, matched = ''] = /Edition ([\s._0-9a-zA-Z]+)/i.exec(ua) || [];
       title += ` ${matched}`;
     }
 

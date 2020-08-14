@@ -10,7 +10,7 @@ export default function detectOs(ua: string): UAAItem {
     title = 'AmigaOS';
 
     if (/AmigaOS ([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [matched = ''] = /AmigaOS ([.0-9a-zA-Z]+)/i.exec(ua) || [];
+      const [, matched = ''] = /AmigaOS ([.0-9a-zA-Z]+)/i.exec(ua) || [];
       version = matched;
     }
 
@@ -20,7 +20,7 @@ export default function detectOs(ua: string): UAAItem {
     code = 'android';
 
     if (/Android[ |/]?([.0-9a-zA-Z]+)/i.test(ua)) {
-      const [matched = ''] = /Android[ |/]?([.0-9a-zA-Z]+)/i.exec(ua) || [];
+      const [, matched = ''] = /Android[ |/]?([.0-9a-zA-Z]+)/i.exec(ua) || [];
       version = matched;
     }
   } else if (/[^A-Za-z]Arch/i.test(ua)) {
@@ -156,6 +156,7 @@ export default function detectOs(ua: string): UAAItem {
 
     if (/Mac OS X/i.test(ua) || /Mac OSX/i.test(ua)) {
       const temp = ua.toLowerCase();
+
       if (/Mac OS X/i.test(ua)) {
         const [matched = ''] = temp.substr(temp.indexOf('os x') + 5).split(';');
         version = matched;
@@ -166,6 +167,9 @@ export default function detectOs(ua: string): UAAItem {
         code = 'mac-2';
       }
       version = `OS X ${(version || '').replace(/_/g, '.')}`;
+      if (temp.indexOf('like mac') !== -1) {
+        version = '';
+      }
     } else if (/Darwin/i.test(ua)) {
       version = 'OS Darwin';
       code = 'mac-1';

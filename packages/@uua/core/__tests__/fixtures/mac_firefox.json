@@ -1,0 +1,14 @@
+{
+  "browser": {
+    "code": "firefox",
+    "icon": "/device/firefox.png",
+    "title": "Firefox",
+    "version": "80.0"
+  },
+  "os": {
+    "code": "mac-3",
+    "icon": "/os/mac-3.png",
+    "title": "Mac",
+    "version": "OS X 10.16"
+  }
+}

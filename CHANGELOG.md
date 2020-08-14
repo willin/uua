@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.6](https://github.com/willin/uua/compare/v0.0.5...v0.0.6) (2020-08-14)
+
+
+### Bug Fixes
+
+* **core:** :sparkles: support for mac os 11.0 ([c93f206](https://github.com/willin/uua/commit/c93f20680f479d397bbe7c64afdd2ceed23cde35))
+
+
+
+
+
 ## [0.0.5](https://github.com/willin/uua/compare/v0.0.4...v0.0.5) (2020-08-14)
 
 

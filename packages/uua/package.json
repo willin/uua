@@ -1,6 +1,6 @@
 {
   "name": "uua",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Unbelievable User-Agent Module for both Node.js and Browser",
   "author": "Willin <willin@willin.org>",
   "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/uua#readme",
@@ -20,6 +20,6 @@
     "url": "https://github.com/willin/uua/issues"
   },
   "dependencies": {
-    "@uua/core": "^0.0.5"
+    "@uua/core": "^0.0.6"
   }
 }

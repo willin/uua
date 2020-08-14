@@ -5,12 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.3 (2020-08-14)
 
-**Note:** Version bump only for package uua
 
+### Bug Fixes
 
-
-
-
-## 0.0.1 (2020-08-10)
-
-**Note:** Version bump only for package uua
+* **ip2c:** :art: split ip2c ([10b56ee](https://github.com/willin/uua/commit/10b56ee4503cb7e5e056fdd7be0b506b689f033c))

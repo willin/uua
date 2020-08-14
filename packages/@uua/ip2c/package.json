@@ -1,19 +1,22 @@
 {
-  "name": "@uua/core",
+  "name": "@uua/ip2c",
   "version": "0.0.2",
-  "description": "Unbelievable User-Agent Module for both Node.js and Browser",
+  "description": "ip2c plugin for uua",
   "keywords": [
-    "useragent",
-    "ip2c"
+    "ip2c",
+    "uua"
   ],
   "author": "Willin Wang <willin@willin.org>",
-  "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/core#readme",
+  "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/ip2c#readme",
   "license": "Apache-2.0",
-  "module": "dist/core.js",
-  "main": "dist/core.cjs.js",
-  "browser": "dist/core.browser.js",
-  "unpkg": "dist/core.browser.js",
-  "types": "dist/core.d.ts",
+  "module": "dist/ip2c.js",
+  "main": "dist/ip2c.cjs.js",
+  "browser": "dist/ip2c.browser.js",
+  "unpkg": "dist/ip2c.browser.js",
+  "types": "dist/ip2c.d.ts",
+  "peerDependencies": {
+    "axios": "^0.19.2"
+  },
   "publishConfig": {
     "access": "public"
   },

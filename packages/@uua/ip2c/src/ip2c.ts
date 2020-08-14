@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { UAACountry } from './types';
 
 // TODO: Auto Generate from '@uua/icons'
 const icons = [
@@ -246,6 +245,12 @@ const icons = [
   'zr',
   'zw'
 ];
+
+export interface UAACountry {
+  code: string;
+  country: string;
+  icon: string;
+}
 
 export default function detectCountry(): Promise<UAACountry> {
   return axios.get<string>('https://ip2c.org/s').then(({ data = '' }) => {

@@ -23,7 +23,7 @@ module.exports = {
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: ['./packages/@uua/core/tsconfig.json']
+        project: ['./packages/@uua/core/tsconfig.json', './packages/@uua/ip2c/tsconfig.json']
       },
       rules: {
         'import/extensions': [

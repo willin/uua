@@ -5,12 +5,6 @@ export interface UAAItem {
   icon: string;
 }
 
-export interface UAACountry {
-  code: string;
-  country: string;
-  icon: string;
-}
-
 export interface UAAResult {
   browser: UAAItem;
   device: UAAItem | undefined;

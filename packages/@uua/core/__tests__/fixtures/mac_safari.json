@@ -1,0 +1,14 @@
+{
+  "browser": {
+    "title": "Safari",
+    "version": "14.0",
+    "code": "safari",
+    "icon": "/device/safari.png"
+  },
+  "os": {
+    "title": "Mac",
+    "version": "OS X 11.0",
+    "code": "mac-3",
+    "icon": "/os/mac-3.png"
+  }
+}

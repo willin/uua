@@ -158,11 +158,11 @@ export default function detectOs(ua: string): UAAItem {
       const temp = ua.toLowerCase();
 
       if (/Mac OS X/i.test(ua)) {
-        const [matched = ''] = temp.substr(temp.indexOf('os x') + 5).split(';');
+        const [matched = ''] = temp.substr(temp.indexOf('os x') + 5).split(/[;)]/);
         version = matched;
         code = 'mac-3';
       } else {
-        const [matched = ''] = temp.substr(temp.indexOf('osx') + 4).split(';');
+        const [matched = ''] = temp.substr(temp.indexOf('osx') + 4).split(/[;)]/);
         version = matched;
         code = 'mac-2';
       }

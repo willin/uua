@@ -5,10 +5,9 @@
   "author": "Willin <willin@willin.org>",
   "homepage": "https://github.com/willin/uua/tree/master/packages/@uua/uua#readme",
   "license": "Apache-2.0",
-  "module": "dist/core.es.js",
+  "module": "dist/core.js",
   "main": "dist/core.cjs.js",
-  "browser": "dist/core.iife.js",
-  "unpkg": "dist/core.iife.js",
+  "unpkg": "dist/core.browser.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willin/uua.git"

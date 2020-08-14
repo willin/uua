@@ -11,7 +11,6 @@
   "license": "Apache-2.0",
   "module": "dist/ip2c.js",
   "main": "dist/ip2c.cjs.js",
-  "browser": "dist/ip2c.browser.js",
   "unpkg": "dist/ip2c.browser.js",
   "types": "dist/ip2c.d.ts",
   "peerDependencies": {
